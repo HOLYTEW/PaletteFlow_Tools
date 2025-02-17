@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaletteFlow</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="/" style="text-decoration: none; color: inherit;">
+                <span class="logo-bold">Palette</span><span class="logo-light">Flow</span>
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/tool">เครื่องมือ</a></li>
+                <li><a href="palette">พาลเลต</a></li>
+                <li><a href="about">เกี่ยวกับเรา</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="content-container">
+        <div class="text-container">
+        <div class="title">
+            <img id="toolHeader" src="assets/Tool_header.png">
+            <!-- <div class="main-title">สร้างสรรค์พาลเลตสี</div>
+            <div class="sub-title">ของคุณเอง !</div> -->
+        </div>
+        <div class="description">
+            <div class="description-text">ทำให้งานออกแบบของคุณสวยงามและโดดเด่นด้วยทฤษฎี 60:30:10</div>
+            <div class="description-text">ปรับแต่งสีให้เข้ากับสไตล์และความต้องการของคุณ พร้อมทั้งรับโค้ดสีไปใช้งานทันที!</div>
+        </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="white-rounded-square">
+            <div class="percentage-bar">
+                <img src="assets/603010.png" alt="">
+            </div>
+            <div class="x-square"></div>
+            <div class="color-bar-wrapper">
+                <div class="color-bars">
+                    <div class="color-bar" id="colorBar60" style="flex: 6;" data-index="0">
+                        <input type="color" class="color-input" data-index="0">
+                    </div>
+                    <div class="color-bar" id="colorBar30" style="flex: 3;" data-index="1">
+                        <input type="color" class="color-input" data-index="1">
+                    </div>
+                    <div class="color-bar" id="colorBar10" style="flex: 1;" data-index="2">
+                        <input type="color" class="color-input" data-index="2">
+                    </div>
+                </div>
+                <div class="custom-close-btn" aria-label="Close" id="delete-button" onclick="clearPaletteBars()"></div>
+            </div>
+            
+            <div class="color-selector">
+            <div class="custom-plus-minus-btn" id="controller60" aria-label="Add or Remove color">
+                <div class="btn-section" id="plusBtn" onclick="splitColorBar('colorBar60')">
+                    <img src="assets/add.png" alt="+">
+                </div>
+                <div class="divider"></div>
+                <div class="btn-section" id="minusBtn" onclick="removeColor()">
+                    <img src="assets/minus.png" alt="-">
+                </div>
+            </div>
+
+            <div class="custom-plus-minus-btn" id="controller30" aria-label="Add or Remove color">
+                <div class="btn-section" id="plusBtn" onclick="splitColorBar('colorBar30')">
+                    <img src="assets/add.png" alt="+">
+                </div>
+                <div class="divider"></div>
+                <div class="btn-section" id="minusBtn" onclick="removeColor()">
+                    <img src="assets/minus.png" alt="-">
+                </div>
+            </div>
+
+            <div class="custom-plus-minus-btn" id="controller10" aria-label="Add or Remove color">
+                <div class="btn-section" id="plusBtn" onclick="splitColorBar('colorBar10')">
+                    <img src="assets/add.png" alt="+">
+                </div>
+                <div class="divider"></div>
+                <div class="btn-section" id="minusBtn" onclick="removeColor()">
+                    <img src="assets/minus.png" alt="-">
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="color-palette-selection">
+        <div class="palette-text-container">
+            <div class="palette-text">ค้นหาแรงบัลดาลใจใหม่ ๆ</div>
+        </div>
+        <div class="palette" data-palette="palette1">
+            <div class="color-swatch" id="colorSwatch60"></div>
+            <div class="color-swatch" id="colorSwatch30"></div>
+            <div class="color-swatch" id="colorSwatch10"></div>
+        </div>
+        <div class="palette" data-palette="palette2">
+            <div class="color-swatch" id="colorSwatch60"></div>
+            <div class="color-swatch" id="colorSwatch30"></div>
+            <div class="color-swatch" id="colorSwatch10"></div>
+        </div>
+        <div class="palette" data-palette="palette3">
+            <div class="color-swatch" id="colorSwatch60"></div>
+            <div class="color-swatch" id="colorSwatch30"></div>
+            <div class="color-swatch" id="colorSwatch10"></div>
+        </div>
+    </section>
+
+    <section class="design-generator">
+            <div class="design-generator-text">Design Generator</div>
+    </section>
+
+    <section class="filter-container">
+        <div class="left-column">
+            <div class="rounded-square">
+                <img src="assets/download.png" alt="" class="download-icon">
+                <img src="assets/blankcircle.png" alt="" class="blank-icon">
+            </div>
+            <!-- <div class="artCanvas-container hidden">
+                <canvas id="artCanvas"></canvas>
+            </div> -->
+            <!-- <div class="canvas-container hidden">
+                <canvas id="imageCanvas"></canvas>
+            </div> -->
+            <div class="web-mockup-container hidden">
+                <iframe src="/webmockup-1.html" class="mockup-frame"></iframe>
+            </div>
+            <div class="thirdCanvas-container hidden">
+                <canvas id="thirdCanvas"></canvas>
+            </div>
+            <div class="fifthCanvas-container hidden">
+                <canvas id="fifthCanvas"></canvas>
+            </div>
+        </div>
+        <div class="right-column">
+            <div class="filter-text">เลือกหมวดหมู่</div>
+            <div class="filter-options">
+                <div class="filter" id="website-filter">เว็บไซต์</div>
+                <!-- <div class="filter" id="art-filter">ภาพวาด</div> -->
+                <!-- <div class="filter" id="image-filter">ศิลปะ</div> -->
+                <div class="filter" id="third-image-filter">ภาพวาดแบบสุ่ม</div>
+            </div>
+            <button class="start-button">เริ่มเลย !</button>
+        </div>
+    </section>
+
+    <section class="loading hidden">
+        <div class="loader"></div>
+    </section>
+
+    <footer class="palette-flow-footer">
+        <div class="footer-container">
+            <div class="footer-column" id="footer-logo">
+                <span class="logo-bold">Palette</span>Flow
+            </div>
+            <div class="footer-column" id="footer-menu">
+                <div class="menu-title">เมนู
+                    <ul class="menu-list">
+                        <li><a href="/tool">เครื่องมือ</a></li>
+                        <li><a href="palette">พาลเลต</a></li>
+                        <li><a href="about">เกี่ยวกับเรา</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-column" id="footer-contact">
+                <div class="menu-title">ติดต่อเรา
+                    <ul class="menu-list">
+                        <li>
+                            <img src="assets/mail.png" alt="" class="footer-icon">
+                            <a href="#gmail">PaletteFlow@gmail.com</a>
+                        </li>
+                        <li>
+                            <img src="assets/call.png" alt="" class="footer-icon">
+                            <a href="#telephone">089-999-9999</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
