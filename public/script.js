@@ -188,11 +188,11 @@ const thirdImagePaths = [
 
 const fifthImagePaths = [
     "assets/5_color_image/Art-0-5.PNG",
-    "assets/5_color_image/Art-1-5.PNG",
-    "assets/5_color_image/Art-2-5.PNG",
-    "assets/5_color_image/Art-3-5.PNG",
-    "assets/5_color_image/Art-4-5.PNG",
-    "assets/5_color_image/Art-5-5.PNG",
+    "assets/5_color_image/Art-1-5.png",
+    "assets/5_color_image/Art-2-5.png",
+    "assets/5_color_image/Art-3-5.png",
+    "assets/5_color_image/Art-4-5.png",
+    "assets/5_color_image/Art-5-5.png",
 ];
 
 // Function load image
